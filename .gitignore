@@ -7,3 +7,4 @@
 */build/Makefile
 */build/lib
 */build/*
+*/CMakeFiles/*
