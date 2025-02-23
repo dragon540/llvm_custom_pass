@@ -1,5 +1,4 @@
 #include "SubConstTransform.h"
-#include "llvm/Support/Casting.h"
 
 namespace subconstTransform
 {
@@ -8,7 +7,8 @@ namespace subconstTransform
 		SubConstTransformAnalysis::Result res;
 		for(llvm::BasicBlock & BB : F) {
 			for(llvm::Instruction & I : BB) {
-				res.push_back(&llvm::cast<llvm::Instruction>(I));
+				if(I.getOpcode() == llvm::Instruction::Sub)
+					res.push_back(&llvm::cast<llvm::BinaryOperator>(I));
 			}
 		}
 

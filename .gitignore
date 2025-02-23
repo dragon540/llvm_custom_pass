@@ -9,3 +9,6 @@
 */build/*
 */CMakeFiles/*
 .cmake
+*/lib/CMakeFiles
+*/lib/Makefiles
+CMakeCache.txt

@@ -15,11 +15,15 @@ bool registerPipeline(StringRef Name, FunctionPassManager &FPM,
 	                if(Name == "print<sub-const-transform-analysis>") {
 				                        FPM.addPass(subconstTransform::SubConstTransformPrinterPass());							                        return true;
 										                }
+			else if(Name == "pass2") {
+				FPM.addPass(subconstTransform::SubConstTransformPass());
+				return true;
+			}
 			                return false;
 }
 
 PassPluginLibraryInfo getAddConstPluginInfo() {
-	        return {LLVM_PLUGIN_API_VERSION, "AddConst",
+	        return {LLVM_PLUGIN_API_VERSION, "SubConstTransform",
 			                        LLVM_VERSION_STRING, [](PassBuilder &PB) {
 							                PB.registerAnalysisRegistrationCallback(registerAnalyses);
 									                PB.registerPipelineParsingCallback(registerPipeline);
